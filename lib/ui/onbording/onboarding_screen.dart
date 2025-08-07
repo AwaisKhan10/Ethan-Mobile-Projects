@@ -40,19 +40,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 20),
+            const SizedBox(height: 60),
 
             /// ✅ Carousel Section
             CarouselSlider.builder(
               itemCount: onboardingData.length,
               options: CarouselOptions(
-                height: 540,
+                height: 420,
                 autoPlay: true,
                 enlargeCenterPage: true,
-                viewportFraction: 0.6,
+                viewportFraction: 0.5,
                 onPageChanged: (index, reason) {
                   setState(() {
                     _currentIndex = index;
@@ -61,13 +61,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               itemBuilder: (context, index, realIndex) {
                 final item = onboardingData[index];
-                return Stack(
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    /// Image
+                    /// ✅ Image
                     Container(
-                      height: 420,
+                      height: 250,
                       width: 235,
-                      margin: const EdgeInsets.only(top: 0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         image: DecorationImage(
@@ -77,34 +77,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ),
                     ),
 
-                    /// Title
-                    Positioned(
-                      top: 450,
-                      left: 0,
-                      right: 0,
-                      child: Center(
-                        child: Text(
-                          item["title"]!,
-                          style: GoogleFonts.orbitron(
-                            color: Colors.white,
-                            fontSize:24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                    const SizedBox(height: 30),
+
+                    /// ✅ Title
+                    Text(
+                      item["title"]!,
+                      style: GoogleFonts.orbitron(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
 
-                    /// Subtitle
-                    Positioned(
-                      top: 500,
-                      left: 10,
-                      right: 10,
-                      child: Center(
+                    const SizedBox(height: 10),
+
+                    /// ✅ Subtitle
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Text(
                           item["subtitle"]!,
                           textAlign: TextAlign.center,
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.orbitron(
                             color: Colors.white70,
                             fontSize: 14,
@@ -118,13 +111,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               },
             ),
 
+            SizedBox(height: 20),
+
             /// ✅ Dot Indicators
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: onboardingData.asMap().entries.map((entry) {
                 return AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
-                  margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 12),
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 4,
+                    vertical: 12,
+                  ),
                   width: _currentIndex == entry.key ? 12 : 8,
                   height: _currentIndex == entry.key ? 12 : 8,
                   decoration: BoxDecoration(
@@ -166,28 +164,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
 
             /// ✅ Sign In Button
-          SizedBox(height: 10),
+            SizedBox(height: 10),
             TextButton(
-              onPressed: ( ) {
-                  Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const SignUPScreen()
-      ),
-    );
-  
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SignUPScreen()),
+                );
               },
               child: Padding(
-                padding: const EdgeInsets.only
-                ( left: 250
-
-                ),
+                padding: const EdgeInsets.only(left: 250),
                 child: Text(
                   "Sign In",
-                  style: GoogleFonts.orbitron(
-                    color: whiteColor,
-                    fontSize: 14,
-                  ),
+                  style: GoogleFonts.orbitron(color: whiteColor, fontSize: 14),
                 ),
               ),
             ),

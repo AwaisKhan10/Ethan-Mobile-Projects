@@ -5,15 +5,13 @@ import 'package:flutter_application_ethan/ui/auth/sign_up/Bar_closed_screen.dart
 import 'package:google_fonts/google_fonts.dart';
 
 class SignUPScreen extends StatelessWidget {
-  
   const SignUPScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(height: 120),
@@ -21,7 +19,7 @@ class SignUPScreen extends StatelessWidget {
             /// 🍸 Icon
             Center(
               child: Image.asset(
-        "assets/dynamic_assets/LogoTransparent.png",
+                "assets/dynamic_assets/LogoTransparent.png",
                 height: 127,
                 width: 127,
               ),
@@ -32,7 +30,7 @@ class SignUPScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: SizedBox(
-                height: 59,        
+                height: 59,
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -43,16 +41,19 @@ class SignUPScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                                   Navigator.push(
-                                   context,
-                                   MaterialPageRoute(
-                                   builder: (context) => const BarClosedScreen()
-                                   ),
-                                    );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const BarClosedScreen(),
+                      ),
+                    );
                   },
                   child: Text(
                     "Continue with email",
-                    style: GoogleFonts.orbitron(fontSize: 14,color: whiteColor),
+                    style: GoogleFonts.orbitron(
+                      fontSize: 14,
+                      color: whiteColor,
+                    ),
                   ),
                 ),
               ),
@@ -74,12 +75,13 @@ class SignUPScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                            Navigator.push(
-                                   context,
-                                   MaterialPageRoute(
-                                   builder: (context) => const NumberScreen()
-                                   ),
-                  );  } ,
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const NumberScreen(),
+                      ),
+                    );
+                  },
                   child: Text(
                     "Use phone number",
                     style: GoogleFonts.orbitron(fontSize: 14),
@@ -87,12 +89,20 @@ class SignUPScreen extends StatelessWidget {
                 ),
               ),
             ),
-
-            const SizedBox(height: 120),
-
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        color: Colors.transparent,
+        height: 130,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
             /// Social icons
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 _socialIcon("assets/icons_assets/facebook.png"),
                 const SizedBox(width: 16),
@@ -101,20 +111,13 @@ class SignUPScreen extends StatelessWidget {
                 _socialIcon("assets/icons_assets/apple.png"),
               ],
             ),
-
-            const Spacer(),
+            const SizedBox(height: 20),
 
             /// Terms
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Text(
-                "Terms of use  Privacy Policy",
-                style: GoogleFonts.orbitron(
-                  color: Colors.white38,
-                  fontSize: 12,
-                ),
-              ),
-            )
+            Text(
+              "Terms of use  Privacy Policy",
+              style: GoogleFonts.orbitron(color: Colors.white38, fontSize: 12),
+            ),
           ],
         ),
       ),
@@ -122,20 +125,16 @@ class SignUPScreen extends StatelessWidget {
   }
 
   Widget _socialIcon(String path) {
-  return Container(
-    width: 50,
-    height: 50,
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(12),
-    ),
-    child: Center(
-      child: Image.asset(
-        path,
-        width: 24,
-        height: 24,
-        fit: BoxFit.fill
+    return Container(
+      width: 50,
+      height: 50,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
       ),
-    ),
-  );
-}}
+      child: Center(
+        child: Image.asset(path, width: 24, height: 24, fit: BoxFit.fill),
+      ),
+    );
+  }
+}

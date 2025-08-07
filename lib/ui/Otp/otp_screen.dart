@@ -94,7 +94,7 @@ class _OTPScreenState extends State<OTPScreen> {
 
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(height: 10),
@@ -147,29 +147,27 @@ class _OTPScreenState extends State<OTPScreen> {
             ),
 
             const SizedBox(height: 32),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  CustomKeypad(
-                    onDigitPressed: addDigit,
-                    onBackspacePressed: deleteDigit,
-                  ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                CustomKeypad(
+                  onDigitPressed: addDigit,
+                  onBackspacePressed: deleteDigit,
+                ),
 
-                  TextButton(
-                    onPressed: () {
-                      startTimer();
-                    },
-                    child: Text(
-                      "Send again",
-                      style: GoogleFonts.orbitron(
-                        fontSize: 14,
-                        color: Colors.white54,
-                      ),
+                TextButton(
+                  onPressed: () {
+                    startTimer();
+                  },
+                  child: Text(
+                    "Send again",
+                    style: GoogleFonts.orbitron(
+                      fontSize: 14,
+                      color: Colors.white54,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
