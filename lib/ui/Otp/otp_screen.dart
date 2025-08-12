@@ -145,8 +145,14 @@ class _OTPScreenState extends State<OTPScreen> {
                 );
               }).toList(),
             ),
-
-            const SizedBox(height: 32),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        height: 310,
+        decoration: BoxDecoration(color: Colors.transparent),
+        child: Column(
+          children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

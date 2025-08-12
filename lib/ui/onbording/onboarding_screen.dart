@@ -43,7 +43,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 60),
+            const SizedBox(height: 80),
 
             /// ✅ Carousel Section
             CarouselSlider.builder(
@@ -92,7 +92,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     const SizedBox(height: 10),
 
                     /// ✅ Subtitle
-                    Expanded(
+                    Flexible(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Text(
@@ -111,7 +111,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               },
             ),
 
-            SizedBox(height: 20),
+            SizedBox(height: 40),
 
             /// ✅ Dot Indicators
             Row(
@@ -134,7 +134,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 );
               }).toList(),
             ),
-
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        height: 130,
+        decoration: BoxDecoration(color: Colors.transparent),
+        child: Column(
+          children: [
             /// ✅ Create Account Button
             SizedBox(height: 20),
             Padding(
@@ -180,8 +187,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
             ),
-
-            const SizedBox(height: 20),
           ],
         ),
       ),
