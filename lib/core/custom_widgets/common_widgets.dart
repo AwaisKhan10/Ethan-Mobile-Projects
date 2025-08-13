@@ -8,11 +8,12 @@ Widget backButton(BuildContext context) {
     child: Container(
       height: 40,
       width: 40,
+      alignment: Alignment.center,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.white, width: 1),
         borderRadius: BorderRadius.circular(8),
       ),
-      child: const Icon(Icons.arrow_back_ios, color: Colors.white, size: 20),
+      child: Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 20),
     ),
   );
 }
@@ -22,10 +23,7 @@ Widget skipButton(BuildContext context, Widget? nextScreen) {
   return GestureDetector(
     onTap: () {
       if (nextScreen != null) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => nextScreen),
-        );
+        Navigator.push(context, MaterialPageRoute(builder: (_) => nextScreen));
       }
     },
     child: Text(
@@ -45,15 +43,10 @@ Widget continueButton(BuildContext context, Widget nextScreen) {
     style: ElevatedButton.styleFrom(
       backgroundColor: const Color(0xFF2EE6D6),
       padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 28),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
     ),
     onPressed: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (_) => nextScreen),
-      );
+      Navigator.push(context, MaterialPageRoute(builder: (_) => nextScreen));
     },
     child: Text(
       "Continue",

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_ethan/core/constants/colors.dart';
 import 'package:flutter_application_ethan/core/custom_widgets/common_widgets.dart';
+import 'package:flutter_application_ethan/ui/iam/i_am_screen.dart';
+import 'package:flutter_application_ethan/ui/root/root_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -20,7 +22,7 @@ class NotificationScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   backButton(context),
-                  skipButton(context, null), 
+                  skipButton(context, RootScreen()),
                 ],
               ),
               const SizedBox(height: 40),
@@ -32,8 +34,7 @@ class NotificationScreen extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: blackColor,
                   ),
-                  child: 
-                  Image.asset("assets/dynamic_assets/chat.png")
+                  child: Image.asset("assets/dynamic_assets/chat.png"),
                 ),
               ),
               const SizedBox(height: 40),
@@ -53,11 +54,11 @@ class NotificationScreen extends StatelessWidget {
                 style: GoogleFonts.orbitron(
                   color: Colors.white70,
                   fontSize: 14,
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               const Spacer(),
-               continueButton(context, const NotificationScreen()),
+              continueButton(context, RootScreen(selectedScreen: 0)),
             ],
           ),
         ),

@@ -40,6 +40,10 @@ dependencies:
   device_preview: ^1.1.0
   font_awesome_flutter: ^10.6.0
   country_picker: ^2.0.20
+  swipable_stack:
+  flutter_xlider: ^3.5.0
+  story_view:
+  video_player:
 
 dev_dependencies:
   flutter_launcher_icons: "^0.14.4"
@@ -89,9 +93,7 @@ flutter:
   assets:
      - assets/static_assets/
      - assets/dynamic_assets/
-     - assets/icons_assets/facebook.png
-     - assets/icons_assets/google.png
-     - assets/icons_assets/apple.png
+     - assets/icons_assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

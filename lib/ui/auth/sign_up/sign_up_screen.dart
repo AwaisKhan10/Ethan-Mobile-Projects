@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_ethan/core/constants/colors.dart';
+import 'package:flutter_application_ethan/core/constants/strings.dart';
 import 'package:flutter_application_ethan/ui/Number/number_screen.dart';
 import 'package:flutter_application_ethan/ui/auth/sign_up/Bar_closed_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -104,11 +105,11 @@ class SignUPScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                _socialIcon("assets/icons_assets/facebook.png"),
+                _socialIcon("$iconsAssets/facebook.png"),
                 const SizedBox(width: 16),
-                _socialIcon("assets/icons_assets/google.png"),
+                _socialIcon("$iconsAssets/google.png"),
                 const SizedBox(width: 16),
-                _socialIcon("assets/icons_assets/apple.png"),
+                _socialIcon("$iconsAssets/apple.png"),
               ],
             ),
             const SizedBox(height: 20),

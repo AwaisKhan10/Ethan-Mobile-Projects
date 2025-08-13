@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_ethan/core/constants/colors.dart';
 import 'package:flutter_application_ethan/core/custom_widgets/common_widgets.dart';
 import 'package:flutter_application_ethan/ui/notification/notification_screen.dart';
+import 'package:flutter_application_ethan/ui/root/root_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FriendsScreen extends StatelessWidget {
@@ -21,7 +22,7 @@ class FriendsScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   backButton(context),
-                  skipButton(context, NotificationScreen()), 
+                  skipButton(context, RootScreen()),
                 ],
               ),
               const SizedBox(height: 40),
@@ -33,8 +34,7 @@ class FriendsScreen extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: blackColor,
                   ),
-                  child: 
-                  Image.asset("assets/dynamic_assets/people.png")
+                  child: Image.asset("assets/dynamic_assets/people.png"),
                 ),
               ),
               const SizedBox(height: 40),
@@ -54,11 +54,11 @@ class FriendsScreen extends StatelessWidget {
                 style: GoogleFonts.orbitron(
                   color: Colors.white70,
                   fontSize: 14,
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               const Spacer(),
-               continueButton(context, const NotificationScreen()),
+              continueButton(context, const NotificationScreen()),
             ],
           ),
         ),

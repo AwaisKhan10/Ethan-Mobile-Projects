@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_ethan/core/custom_widgets/custom_keypad.dart';
+import 'package:flutter_application_ethan/ui/profile/profile_detail_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OTPScreen extends StatefulWidget {
@@ -45,7 +46,7 @@ class _OTPScreenState extends State<OTPScreen> {
         Future.delayed(const Duration(milliseconds: 500), () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => const PlaceholderScreen()),
+            MaterialPageRoute(builder: (_) => const ProfileDetailsScreen()),
           );
         });
       }
@@ -182,19 +183,19 @@ class _OTPScreenState extends State<OTPScreen> {
   }
 }
 
-class PlaceholderScreen extends StatelessWidget {
-  const PlaceholderScreen({super.key});
+// class PlaceholderScreen extends StatelessWidget {
+//   const PlaceholderScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: const Center(
-        child: Text(
-          "You are logged in ✅",
-          style: TextStyle(color: Colors.white, fontSize: 20),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: Colors.black,
+//       body: const Center(
+//         child: Text(
+//           "You are logged in ✅",
+//           style: TextStyle(color: Colors.white, fontSize: 20),
+//         ),
+//       ),
+//     );
+//   }
+// }

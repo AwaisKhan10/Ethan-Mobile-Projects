@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_ethan/core/custom_widgets/common_widgets.dart';
 import 'package:flutter_application_ethan/ui/friends/friends_screen.dart';
+import 'package:flutter_application_ethan/ui/root/root_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PassionsScreen extends StatefulWidget {
@@ -43,66 +44,72 @@ class _PassionsScreenState extends State<PassionsScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   backButton(context),
-                  skipButton(context, const FriendsScreen()),
+                  skipButton(context, RootScreen()),
                 ],
               ),
               const SizedBox(height: 40),
               const SizedBox(height: 20),
 
               // Grid of Interests
-        Padding(
-  padding: const EdgeInsets.all(16.0),
-  child: GridView.builder(
-    shrinkWrap: true, // ✅ lets it take only needed height
-    physics: const NeverScrollableScrollPhysics(), // ✅ prevents internal scroll
-    itemCount: interests.length,
-    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-      crossAxisCount: 2,
-      mainAxisSpacing: 12,
-      crossAxisSpacing: 12,
-      childAspectRatio: 3.5,
-    ),
-    itemBuilder: (context, index) {
-      final item = interests[index];
-      final bool isSelected = item["selected"];
-
-      return GestureDetector(
-        onTap: () {
-          setState(() {
-            interests[index]["selected"] = !isSelected;
-          });
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            color: isSelected ? const Color(0xFF2EE6D6) : Colors.white,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                item["icon"],
-                color: isSelected ? Colors.white : Colors.black,
-              ),
-              const SizedBox(width: 8),
-              Flexible( // ✅ stops text from overflowing
-                child: Text(
-                  item["label"],
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.orbitron(
-                    fontSize: 14,
-                    color: isSelected ? Colors.white : Colors.black,
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: GridView.builder(
+                  shrinkWrap: true, // ✅ lets it take only needed height
+                  physics:
+                      const NeverScrollableScrollPhysics(), // ✅ prevents internal scroll
+                  itemCount: interests.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 12,
+                    crossAxisSpacing: 12,
+                    childAspectRatio: 3.5,
                   ),
+                  itemBuilder: (context, index) {
+                    final item = interests[index];
+                    final bool isSelected = item["selected"];
+
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          interests[index]["selected"] = !isSelected;
+                        });
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: isSelected
+                              ? const Color(0xFF2EE6D6)
+                              : Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              item["icon"],
+                              color: isSelected ? Colors.white : Colors.black,
+                            ),
+                            const SizedBox(width: 8),
+                            Flexible(
+                              // ✅ stops text from overflowing
+                              child: Text(
+                                item["label"],
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.orbitron(
+                                  fontSize: 14,
+                                  color: isSelected
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
-            ],
-          ),
-        ),
-      );
-    },
-  ),
-),
-                Spacer(),
+              Spacer(),
 
               // Continue Button
               continueButton(context, const FriendsScreen()),
@@ -113,98 +120,3 @@ class _PassionsScreenState extends State<PassionsScreen> {
     );
   }
 }
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter_application_ethan/core/custom_widgets/common_widgets.dart';
-// import 'package:flutter_application_ethan/ui/friends/friends_screen.dart';
-// import 'package:google_fonts/google_fonts.dart';
-
-// class PassionsScreen extends StatefulWidget {
-//   const PassionsScreen({super.key});
-
-//   @override
-//   State<PassionsScreen> createState() => _PassionsScreenState();
-// }
-
-// class _PassionsScreenState extends State<PassionsScreen> {
-//   List<String> interests = [
-//     "Photography", "Shopping", "Karaoke", "Yoga",
-//     "Cooking", "Tennis", "Run", "Swimming",
-//     "Art", "Traveling", "Extreme", "Music",
-//     "Drink", "Video games"
-//   ];
-
-//   List<String> selectedInterests = [];
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.black,
-//       body: SafeArea(
-//         child: Padding(
-//           padding: const EdgeInsets.all(20),
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.stretch,
-//             children: [
-//               Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                 children: [
-//                   backButton(context),
-//                   skipButton(context, const FriendsScreen()),
-//                 ],
-//               ),
-//               const SizedBox(height: 40),
-//               Text(
-//                 "Your Interests",
-//                 style: GoogleFonts.orbitron(
-//                   color: Colors.white,
-//                   fontSize: 24,
-//                   fontWeight: FontWeight.bold,
-//                 ),
-//               ),
-//               const SizedBox(height: 20),
-//               Wrap(
-//                 spacing: 10,
-//                 runSpacing: 10,
-//                 children: interests.map((item) {
-//                   bool isSelected = selectedInterests.contains(item);
-//                   return GestureDetector(
-//                     onTap: () {
-//                       setState(() {
-//                         if (isSelected) {
-//                           selectedInterests.remove(item);
-//                         } else {
-//                           selectedInterests.add(item);
-//                         }
-//                       });
-//                     },
-//                     child: Container(
-//                       padding:
-//                           const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-//                       decoration: BoxDecoration(
-//                         color: isSelected
-//                             ? const Color(0xFF2EE6D6)
-//                             : Colors.transparent,
-//                         border: Border.all(color: Colors.white),
-//                         borderRadius: BorderRadius.circular(20),
-//                       ),
-//                       child: Text(
-//                         item,
-//                         style: GoogleFonts.orbitron(
-//                           color: isSelected ? Colors.white : Colors.white,
-//                           fontSize: 14,
-//                         ),
-//                       ),
-//                     ),
-//                   );
-//                 }).toList(),
-//               ),
-//               const Spacer(),
-//               continueButton(context, const FriendsScreen()),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

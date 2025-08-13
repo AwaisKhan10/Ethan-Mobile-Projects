@@ -157,7 +157,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SignUPScreen(),
+                      ),
+                    );
+                  },
                   child: Text(
                     "Create Your Account",
                     style: GoogleFonts.orbitron(

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_ethan/core/constants/colors.dart';
+import 'package:flutter_application_ethan/core/constants/strings.dart';
 import 'package:flutter_application_ethan/ui/iam/i_am_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FinalProfileScreen extends StatelessWidget {
   const FinalProfileScreen({super.key});
 
-   @override
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
@@ -28,116 +30,67 @@ class FinalProfileScreen extends StatelessWidget {
                 ),
                 IconButton(
                   icon: const Icon(Icons.tune, color: Colors.white),
-                  onPressed: () {
-                       Navigator.push(
-        context,
-        MaterialPageRoute(builder: (_) => const IAmScreen()),
-      );
-  
-                  },
+                  onPressed: () {},
                 ),
               ],
             ),
             const SizedBox(height: 35),
             Center(
               child: Stack(
+                clipBehavior: Clip.none,
                 alignment: Alignment.center,
                 children: [
-                   Container(
-                 width: 101,
-                 height: 106,
-                decoration: BoxDecoration(
-                 color: Colors.white,
-                 image: DecorationImage(image: AssetImage("assets/dynamic_assets/photo.png")),
-                   borderRadius: BorderRadius.circular(30), // same as width/height / 2
-                  ),),
-        //            ClipRRect(
-        //   borderRadius: BorderRadius.circular(20),
-        //   child: Image.network(
-        //     'https://randomuser.me/api/portraits/men/1.jpg',
-        //     width: 130,
-        //     height: 130,
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
+                  Container(
+                    width: 101,
+                    height: 106,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      image: DecorationImage(
+                        image: AssetImage("assets/dynamic_assets/photo.png"),
+                      ),
+                      borderRadius: BorderRadius.circular(
+                        30,
+                      ), // same as width/height / 2
+                    ),
+                  ),
 
-        // Bottom-left wrench icon
-        Positioned(
-          bottom: 0,
-          left: 0,
-          child: Container(
-            padding: const EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(6),
-            ),
-            child: const Icon(
-              Icons.build, // Wrench icon
-              color: Colors.white,
-              size: 20,
-            ),
-          ),
-        ),
+                  // Bottom-left wrench icon
+                  Positioned(
+                    bottom: -10,
+                    left: -15,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const IAmScreen()),
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Image.asset("$iconsAssets/scro.png", scale: 3),
+                      ),
+                    ),
+                  ),
 
-        // Bottom-right camera icon in purple circle
-        Positioned(
-          bottom: 0,
-          right: 0,
-          child: CircleAvatar(
-            radius: 18,
-            backgroundColor: Colors.white,
-            child: CircleAvatar(
-              radius: 16,
-              backgroundColor: Colors.deepPurple,
-              child: const Icon(
-                Icons.camera_alt,
-                size: 16,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ),
-      
-                  // Container(
-                  //   width: 110,
-                  //   height: 110,
-                  //   decoration: const BoxDecoration(
-                  //     shape: BoxShape.circle,
-                  //     color: Colors.white,
-                  //   ),
-                  // ),
-                  // Container(
-                  //   width: 100,
-                  //   height: 100,
-                  //   decoration: const BoxDecoration(
-                  //     shape: BoxShape.circle,
-                  //     color: Colors.deepPurple,
-                  //   ),
-                  //   child: const CircleAvatar(
-                  //     radius: 48,
-                  //     backgroundImage: NetworkImage(
-                  //       'https://randomuser.me/api/portraits/men/1.jpg',
-                  //     ),
-                  //   ),
-                  // ),
-                  // Positioned(
-                  //   bottom: 0,
-                  //   right: 0,
-                  //   child: 
-                  // //     Container(
-                  // //   width: 110,
-                  // //   height: 110,
-                  // //   decoration: const BoxDecoration(
-                  // //     shape: BoxShape.circle,
-                  // //     color: Colors.white,
-                  // //   ),
-                  // // ),
-                  //    CircleAvatar(
-                  //     radius: 14,
-                  //     backgroundColor: Colors.white,
-                  //     child: Icon(Icons.camera_alt, size: 16, color: Colors.deepPurple),
-                  //   ),
-                  // ),
+                  // Bottom-right camera icon in purple circle
+                  Positioned(
+                    bottom: -10,
+
+                    right: -10,
+                    child: CircleAvatar(
+                      radius: 21,
+                      backgroundColor: Colors.white,
+                      child: CircleAvatar(
+                        radius: 19,
+                        backgroundColor: Colors.deepPurple,
+                        child: Image.asset("$iconsAssets/camera.png", scale: 3),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -152,25 +105,44 @@ class FinalProfileScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: const [
-                _IconButtonWithLabel(icon: Icons.block, label: 'Block List', color: Colors.red),
-                _IconButtonWithLabel(icon: Icons.delete_forever, label: 'Request Deletion', color: Colors.red),
+                _IconButtonWithLabel(
+                  icon: Icons.close,
+                  label: 'Block List',
+                  color: Colors.red,
+                ),
+                _IconButtonWithLabel(
+                  icon: Icons.person,
+                  label: 'Request Deletion',
+                  color: Colors.red,
+                ),
               ],
             ),
-            const SizedBox(height: 10),
-            const _IconButtonWithLabel(icon: Icons.send, label: 'Customer Care', color: Colors.white),
+            SizedBox(height: 30),
+            Center(
+              child: Container(
+                width: 55,
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: blackColor,
+                  border: Border.all(
+                    width: 1,
+                    color: Colors.grey.withOpacity(0.40),
+                  ),
+                ),
+                child: Image.asset("$iconsAssets/customerCare.png", scale: 3),
+              ),
+            ),
+            SizedBox(height: 10),
+            Center(
+              child: Text(
+                "Customer Care",
+                style: GoogleFonts.orbitron(fontSize: 10, color: whiteColor),
+              ),
+            ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        selectedItemColor: Colors.deepPurple,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outline), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
-        ],
       ),
     );
   }
@@ -220,11 +192,11 @@ class _IconButtonWithLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Icon(icon, size: 26, color: color),
+        Icon(icon, size: 35, color: color),
         const SizedBox(height: 4),
         Text(
           label,
-          style: TextStyle(color: color, fontSize: 12),
+          style: GoogleFonts.orbitron(fontSize: 12, color: whiteColor),
         ),
       ],
     );
