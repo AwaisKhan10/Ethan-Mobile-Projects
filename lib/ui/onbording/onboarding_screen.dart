@@ -66,7 +66,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   children: [
                     /// ✅ Image
                     Container(
-                      height: 250,
+                      height: 260,
                       width: 235,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),

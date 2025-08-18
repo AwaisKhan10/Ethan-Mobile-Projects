@@ -24,11 +24,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: blackColor, // or any background color you prefer
+      backgroundColor: blackColor, 
       body: Center(
         child: Image.asset(
-          'assets/dynamic_assets/LogoTransparent.png', // ✅ replace with your actual logo path
-          width: 150, // adjust size if needed
+          'assets/dynamic_assets/LogoTransparent.png', 
+          width: 150, 
           height: 150,
         ),
       ),

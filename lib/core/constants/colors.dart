@@ -35,3 +35,4 @@ const Color redColor = Color(0xfff000000 % 40);
 const Color darkGreyColor = Color(0xff2C2C2C);
 const Color offWhiteColor = Color(0xffF8F9FA);
 const Color darkPurpleColor = Color(0xff082431);
+const Color AccentColor =Color(0xFF581C87);
