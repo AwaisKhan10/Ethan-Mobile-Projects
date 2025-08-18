@@ -75,6 +75,7 @@ class _PassionsScreenState extends State<PassionsScreen> {
                         });
                       },
                       child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
                         decoration: BoxDecoration(
                           color: isSelected
                               ? const Color(0xFF2EE6D6)
@@ -82,7 +83,8 @@ class _PassionsScreenState extends State<PassionsScreen> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Icon(
                               item["icon"],

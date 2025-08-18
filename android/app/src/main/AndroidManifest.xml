@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     
     <application
-        android:label="Ethan App"
+        android:label="Neon Dream"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

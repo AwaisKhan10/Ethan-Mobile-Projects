@@ -48,34 +48,34 @@ class RootScreen extends StatelessWidget {
                         : Color(0xff581C87),
                   ),
                 ),
-                model.currentIndex != 1
-                    ? GestureDetector(
-                        onTap: () {
-                          model.updateIndex(1);
-                        },
-                        child: Image.asset("$iconsAssets/like.png", scale: 3),
-                      )
-                    : Image.asset("$iconsAssets/indicator.png", scale: 3),
+                // model.currentIndex != 1
+                //     ? GestureDetector(
+                //         onTap: () {
+                //           model.updateIndex(1);
+                //         },
+                //         child: Image.asset("$iconsAssets/like.png", scale: 3),
+                //       )
+                //     : Image.asset("$iconsAssets/indicator.png", scale: 3),
                 GestureDetector(
                   onTap: () {
-                    model.updateIndex(2);
+                    model.updateIndex(1);
                   },
                   child: Image.asset(
                     "$iconsAssets/message.png",
                     scale: 3,
-                    color: model.currentIndex != 2
+                    color: model.currentIndex != 1
                         ? Color(0xffADAFBB)
                         : Color(0xff581C87),
                   ),
                 ),
                 GestureDetector(
                   onTap: () {
-                    model.updateIndex(3);
+                    model.updateIndex(2);
                   },
                   child: Image.asset(
                     "$iconsAssets/people.png",
                     scale: 3,
-                    color: model.currentIndex != 3
+                    color: model.currentIndex != 2
                         ? Color(0xffADAFBB)
                         : Color(0xff581C87),
                   ),
