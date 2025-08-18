@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_ethan/core/constants/colors.dart';
+import 'package:flutter_application_ethan/ui/card/card_screen.dart';
 import 'package:flutter_application_ethan/ui/profile/profile_screen.dart';
+import 'package:flutter_xlider/flutter_xlider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MatchScreen1 extends StatelessWidget {
@@ -40,17 +42,8 @@ class MatchScreen1 extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Online count with dot
                   Row(
                     children: [
-                      // Container(
-                      //   width: 10,
-                      //   height: 10,
-                      //   decoration: BoxDecoration(
-                      //     color: Colors.green,
-                      //     shape: BoxShape.circle,
-                      //   ),
-                      // ),
                       SizedBox(width: 6),
                       Text(
                         "User Online: 345",
@@ -89,7 +82,12 @@ class MatchScreen1 extends StatelessWidget {
                     ),
                   ),
 
-                  Icon(Icons.swap_vert, color: Colors.white, size: 30),
+                  IconButton(
+                    icon: const Icon(Icons.tune, color: Colors.white),
+                    onPressed: () {
+                      showFilterBottomSheet(context);
+                    },
+                  ),
                 ],
               ),
 
@@ -169,4 +167,196 @@ class MatchScreen1 extends StatelessWidget {
       ),
     );
   }
+}
+
+void showFilterBottomSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.black,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
+    ),
+    builder: (context) {
+      String selectedInterest = "Girls";
+      double distance = 50;
+      List<double> ageRange = [18, 30];
+
+      return StatefulBuilder(
+        builder: (context, setState) {
+          return Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Top row: Empty space + Clear
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const SizedBox(width: 40),
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedInterest = "Girls";
+                          distance = 50;
+                          ageRange = [18, 30];
+                        });
+                      },
+                      child: Text(
+                        "Clear",
+                        style: GoogleFonts.orbitron(
+                          color: const Color(0xFF8A2BE2),
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+
+                // Interested in
+                Text(
+                  "Interested in",
+                  style: GoogleFonts.orbitron(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+                const SizedBox(height: 15),
+
+                // Interest selector
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 1),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Row(
+                    children: [
+                      buildInterestButton("Girls", selectedInterest, () {
+                        setState(() => selectedInterest = "Girls");
+                      }),
+                      buildInterestButton("Boys", selectedInterest, () {
+                        setState(() => selectedInterest = "Boys");
+                      }),
+                      buildInterestButton("Both", selectedInterest, () {
+                        setState(() => selectedInterest = "Both");
+                      }),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+
+                // Location selector
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                    vertical: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 1),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Chicago, USA",
+                        style: GoogleFonts.orbitron(color: Colors.white),
+                      ),
+                      const Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.white,
+                        size: 18,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 25),
+
+                // Distance
+                Text(
+                  "Distance",
+                  style: GoogleFonts.orbitron(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+                Slider(
+                  value: distance,
+                  onChanged: (val) => setState(() => distance = val),
+                  min: 0,
+                  max: 100,
+                  activeColor: const Color(0xFF8A2BE2),
+                  inactiveColor: Colors.white54,
+                ),
+                const SizedBox(height: 20),
+
+                // Age
+                Text(
+                  "Age",
+                  style: GoogleFonts.orbitron(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+                FlutterSlider(
+                  values: ageRange,
+                  rangeSlider: true,
+                  max: 60,
+                  min: 18,
+                  handler: customSliderHandler(),
+                  rightHandler: customSliderHandler(),
+                  trackBar: FlutterSliderTrackBar(
+                    activeTrackBar: BoxDecoration(
+                      color: const Color(0xFF8A2BE2),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    inactiveTrackBar: BoxDecoration(
+                      color: Colors.white54,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                  ),
+                  onDragging: (handlerIndex, lowerValue, upperValue) {
+                    setState(() {
+                      ageRange[0] = lowerValue;
+                      ageRange[1] = upperValue;
+                    });
+                  },
+                ),
+                const SizedBox(height: 30),
+
+                // Continue button
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF8A2BE2),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      // showDrinkSelectionBottomSheet(context);
+                    },
+                    child: Text(
+                      "Continue",
+                      style: GoogleFonts.orbitron(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+              ],
+            ),
+          );
+        },
+      );
+    },
+  );
 }

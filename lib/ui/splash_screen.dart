@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_ethan/core/constants/colors.dart';
+import 'package:flutter_application_ethan/core/constants/strings.dart';
 import 'package:flutter_application_ethan/ui/onbording/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,13 +25,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: blackColor, 
-      body: Center(
-        child: Image.asset(
-          'assets/dynamic_assets/LogoTransparent.png', 
-          width: 150, 
-          height: 150,
-        ),
+      backgroundColor: blackColor,
+      body: SizedBox.expand(
+        child: Image.asset('$staticAssets/splash.jpg', fit: BoxFit.cover),
       ),
     );
   }

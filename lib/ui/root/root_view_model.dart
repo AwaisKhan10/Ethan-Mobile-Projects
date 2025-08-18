@@ -19,7 +19,7 @@ class RootViewModel extends BaseViewModel {
   }
 
   final List<Widget> rootScreens = [
-    DiscoverScreen(),
+    // DiscoverScreen(),
     MatchScreen1(),
     MessagesScreen(),
     FinalProfileScreen(),
